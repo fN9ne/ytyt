@@ -7,8 +7,6 @@ import Header from "./components/Header";
 /* main component */
 const App = () => {
 	const location = useLocation();
-	const vh = window.innerHeight / 100;
-	document.documentElement.style.setProperty("--vh", `${vh}px`);
 	return (
 		<>
 			<Header />
