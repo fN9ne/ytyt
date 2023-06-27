@@ -3,11 +3,7 @@
 /* other components */
 /* main component */
 const HomePage = () => {
-	return (
-		<div className="home">
-			<div className="empty">HomePage</div>
-		</div>
-	);
+	return <div className="home"></div>;
 };
 /* export */
 export default HomePage;
