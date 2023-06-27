@@ -44,6 +44,7 @@ const Header = () => {
 								closeBurgerMenu();
 							}
 						}}
+						style={{ height: window.innerHeight + "px" }}
 						className={`header-burger-content${isBurgerMenuActive ? " header-burger-content_active" : ""}`}
 					>
 						<div className="header-burger-content__body">
