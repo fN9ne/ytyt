@@ -63,7 +63,7 @@ const Header = () => {
 										]}
 									/>
 									<Button size="medium" color="blue" arrow arrowType="left">
-										Войти
+										Войтиd
 									</Button>
 								</div>
 							</div>
