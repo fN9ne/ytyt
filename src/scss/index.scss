@@ -1,6 +1,17 @@
+html {
+	overflow: hidden;
+}
+
 body {
 	font-family: 'Gilroy';
 	background-color: #F9F8FD;
+
+	height: 100%;
+
+	position: fixed;
+
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 .container {
