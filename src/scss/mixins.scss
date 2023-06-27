@@ -1,0 +1,17 @@
+@mixin fontFace ($ff, $path, $fs, $fw) {
+	@font-face {
+		font-family: $ff;
+		src: url('../fonts/' + $path + '.woff') format('woff'), url('../fonts/' + $path + '.woff2') format('woff2');
+		font-display: swap;
+		font-style: $fs;
+		font-weight: $fw;
+	}
+}
+
+@mixin rv($prop, $start, $min, $point) {
+	#{$prop}: calc(#{$min}px + (#{$start} - #{$min}) * ((100vw - #{$point}px) / (1920 - #{$point})));
+
+	@media (max-width: #{$point}px) {
+		#{$prop}: #{$min}px;
+	}
+}

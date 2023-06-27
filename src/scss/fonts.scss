@@ -1,0 +1,22 @@
+@import './mixins.scss';
+
+@include fontFace('Gilroy', 'Gilroy-Thin', normal, 100);
+@include fontFace('Gilroy', 'Gilroy-ThinItalic', italic, 100);
+@include fontFace('Gilroy', 'Gilroy-UltraLight', normal, 200);
+@include fontFace('Gilroy', 'Gilroy-UltraLightItalic', italic, 200);
+@include fontFace('Gilroy', 'Gilroy-Light', normal, 300);
+@include fontFace('Gilroy', 'Gilroy-LightItalic', italic, 300);
+@include fontFace('Gilroy', 'Gilroy-Regular', normal, 400);
+@include fontFace('Gilroy', 'Gilroy-RegularItalic', italic, 400);
+@include fontFace('Gilroy', 'Gilroy-Medium', normal, 500);
+@include fontFace('Gilroy', 'Gilroy-MediumItalic', italic, 500);
+@include fontFace('Gilroy', 'Gilroy-Semibold', normal, 600);
+@include fontFace('Gilroy', 'Gilroy-SemiboldItalic', italic, 600);
+@include fontFace('Gilroy', 'Gilroy-Bold', normal, 700);
+@include fontFace('Gilroy', 'Gilroy-BoldItalic', italic, 700);
+@include fontFace('Gilroy', 'Gilroy-Extrabold', normal, 800);
+@include fontFace('Gilroy', 'Gilroy-ExtraboldItalic', italic, 800);
+@include fontFace('Gilroy', 'Gilroy-Black', normal, 900);
+@include fontFace('Gilroy', 'Gilroy-BlackItalic', italic, 900);
+@include fontFace('Gilroy', 'Gilroy-Heavy', normal, 1000);
+@include fontFace('Gilroy', 'Gilroy-HeavyItalic', italic, 1000);

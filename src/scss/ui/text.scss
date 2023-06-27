@@ -1,0 +1,24 @@
+.text {
+	color: #22253B;
+	font-size: 16px;
+
+	&_small {
+		font-size: 13px;
+	}
+
+	&_medium {
+		font-size: 20px;
+	}
+
+	&_semi {
+		font-size: 24px;
+	}
+
+	&_big {
+		font-size: 32px;
+	}
+
+	&_biggest {
+		font-size: 46px;
+	}
+}

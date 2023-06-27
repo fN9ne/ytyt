@@ -1,0 +1,39 @@
+@import '../variables';
+@import '../mixins';
+
+.navbar {
+	&_vertical {
+		.navbar {
+			&__list {
+				flex-direction: column;
+			}
+		}
+	}
+
+	&__item {
+		&_mobile {
+			display: none;
+
+			@media (max-width: 425px) {
+				display: block;
+			}
+		}
+	}
+
+	&__list {
+		display: flex;
+		// gap: 40px;
+		@include rv('gap', 40, 20, 768);
+	}
+
+	&__link {
+		transition: 350ms;
+
+		&:hover,
+		&:focus {
+			@media #{$mouse-device} {
+				color: #F15525;
+			}
+		}
+	}
+}

@@ -1,0 +1,109 @@
+@import '../variables';
+
+.button {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+
+	transition: 350ms;
+
+	&_default {
+		background-color: transparent;
+
+		span {
+			color: #3C3E50;
+
+			transition: 350ms;
+		}
+
+		&:hover,
+		&:focus {
+			@media #{$mouse-device} {
+				span {
+					color: #F15525;
+				}
+			}
+		}
+	}
+
+	&_small {
+		height: 32px;
+
+		padding: 0 16px;
+
+		gap: 4px;
+
+		span {
+			font-size: 13px;
+		}
+
+		svg {
+			width: 10px;
+		}
+	}
+
+	&_medium {
+		height: 48px;
+
+		padding: 0 24px;
+
+		span {
+			font-size: 15px;
+		}
+
+		svg {
+			width: 15px;
+		}
+	}
+
+	&_big {
+		height: 72px;
+
+		padding: 0 44px;
+
+		span {
+			font-size: 20px;
+		}
+
+		svg {
+			width: 16px;
+		}
+	}
+
+	&_arrow {
+		border-radius: 35px;
+
+		span {
+			color: #fff;
+		}
+	}
+
+	&_blue {
+		background-color: #38BFF2;
+
+		&:hover,
+		&:focus {
+			@media #{$mouse-device} {
+				background-color: #F15525;
+			}
+		}
+	}
+
+	&_orange {
+		background-color: #F15525;
+
+		&:hover,
+		&:focus {
+			@media #{$mouse-device} {
+				background-color: #38BFF2;
+			}
+		}
+	}
+}
+
+.button_arrow.button_small,
+.button_arrow.button_medium {
+	span {
+		font-weight: 500;
+	}
+}
