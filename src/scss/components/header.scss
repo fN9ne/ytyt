@@ -108,8 +108,6 @@
 		opacity: 0;
 		visibility: hidden;
 
-		overflow: auto;
-
 		transition: 350ms;
 
 		&__close {
@@ -144,7 +142,7 @@
 		}
 
 		&__body {
-			min-height: 100vh;
+			min-height: 100%;
 
 			display: flex;
 			justify-content: flex-end;
