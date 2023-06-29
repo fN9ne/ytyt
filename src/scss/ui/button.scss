@@ -7,6 +7,11 @@
 
 	transition: 350ms;
 
+	&[disabled] {
+		pointer-events: none;
+		opacity: 0.5;
+	}
+
 	&_default {
 		background-color: transparent;
 
@@ -16,8 +21,7 @@
 			transition: 350ms;
 		}
 
-		&:hover,
-		&:focus {
+		&:hover {
 			@media #{$mouse-device} {
 				span {
 					color: #F15525;
@@ -81,8 +85,7 @@
 	&_blue {
 		background-color: #38BFF2;
 
-		&:hover,
-		&:focus {
+		&:hover {
 			@media #{$mouse-device} {
 				background-color: #F15525;
 			}
@@ -92,8 +95,7 @@
 	&_orange {
 		background-color: #F15525;
 
-		&:hover,
-		&:focus {
+		&:hover {
 			@media #{$mouse-device} {
 				background-color: #38BFF2;
 			}

@@ -29,8 +29,7 @@
 	&__link {
 		transition: 350ms;
 
-		&:hover,
-		&:focus {
+		&:hover {
 			@media #{$mouse-device} {
 				color: #F15525;
 			}

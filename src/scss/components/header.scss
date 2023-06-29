@@ -4,13 +4,6 @@
 .header {
 	&__logo {
 		transition: 350ms;
-
-		&:focus {
-			@media #{$mouse-device} {
-				transform: scale(0.8);
-				opacity: 0.65;
-			}
-		}
 	}
 
 	&__container {
@@ -41,9 +34,30 @@
 		}
 	}
 
-	&__registration {
+	&__registration,
+	&__profile {
 		@media (max-width: 425px) {
 			display: none;
+		}
+	}
+
+	&__profile {
+		height: 32px;
+
+		padding: 0 16px;
+
+		span {
+			line-height: 32px;
+
+			transition: 350ms;
+		}
+
+		&:hover {
+			@media #{$mouse-device} {
+				span {
+					color: #F15525;
+				}
+			}
 		}
 	}
 

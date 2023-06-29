@@ -7,6 +7,7 @@ import { ReactComponent as ArrowAngle } from "../img/icons/arrow_angle.svg";
 const Button = (props) => {
 	return (
 		<button
+			disabled={props.disabled}
 			onClick={props.onClickEvent}
 			className={`${props.className ? props.className + " " : ""}button${props.arrow ? " button_arrow" : " button_default"}${
 				props.size === "small"

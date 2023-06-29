@@ -1,3 +1,5 @@
+@import 'variables';
+
 body {
 	font-family: 'Gilroy';
 	background-color: #F9F8FD;
@@ -20,4 +22,107 @@ body {
 
 .page {
 	flex: 1 1 auto;
+}
+
+.error-message {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.35;
+	color: #e65353;
+
+	margin: 12px 0 0 0;
+
+	display: none;
+
+	&:first-of-type {
+		margin: 0;
+	}
+
+	&_active {
+		display: block;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 11px;
+	}
+}
+
+.alert {
+	max-width: 300px;
+
+	background-color: #fff;
+	box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+
+	padding: 16px;
+	border-radius: 4px;
+
+	position: fixed;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 2;
+
+	transition: 250ms;
+
+	cursor: pointer;
+
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+
+	@media (max-width: 768px) {
+		max-width: 280px;
+		width: 100%;
+		justify-content: center;
+
+		span {
+			font-size: 12px;
+		}
+	}
+
+	&.exiting,
+	&.exited {
+		top: -10px;
+		opacity: 0;
+		visibility: hidden;
+
+		@media (max-width: 768px) {
+			top: auto;
+			bottom: -10px;
+		}
+	}
+
+	&.entering,
+	&.entered {
+		top: 8px;
+		opacity: 1;
+		visibility: visible;
+
+		@media (max-width: 768px) {
+			top: auto;
+			bottom: 8px;
+		}
+	}
+
+	&_success {
+		$color: #2DA640;
+
+		border: 1px solid $color;
+		background-color: #ecfff1;
+
+		span {
+			color: $color;
+			font-weight: 500;
+			line-height: 16px;
+		}
+
+		svg path {
+			fill: $color;
+		}
+	}
+
+	&:hover {
+		@media #{$mouse-device} {
+			opacity: 0.85;
+		}
+	}
 }

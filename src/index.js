@@ -12,8 +12,11 @@ import "./scss/null.scss";
 import "./scss/index.scss";
 import "./scss/ui/button.scss";
 import "./scss/ui/text.scss";
+import "./scss/ui/formitem.scss";
 import "./scss/components/header.scss";
 import "./scss/components/navbar.scss";
+import "./scss/components/loader.scss";
+import "./scss/components/modals.scss";
 /* render root */
 ReactDOM.createRoot(document.querySelector(".wrapper")).render(
 	<Provider store={store}>
