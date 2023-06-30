@@ -22,8 +22,14 @@ const Header = () => {
 
 	const dispatch = useDispatch();
 
-	const closeBurgerMenu = () => dispatch({ type: "CLOSE_BURGER_MENU" });
-	const openBurgerMenu = () => dispatch({ type: "OPEN_BURGER_MENU" });
+	const closeBurgerMenu = () => {
+		dispatch({ type: "CLOSE_BURGER_MENU" });
+		document.body.classList.remove("locked");
+	};
+	const openBurgerMenu = () => {
+		dispatch({ type: "OPEN_BURGER_MENU" });
+		document.body.classList.add("locked");
+	};
 
 	const updateModals = (value) => {
 		dispatch({ type: "CLOSE_ALL_MODALS" });
@@ -45,11 +51,21 @@ const Header = () => {
 						<div className="header__auth">
 							{!isLoggedIn ? (
 								<>
-									<Button onClickEvent={() => updateModals({ signUpActive: true })} className="header__registration" size="small">
+									<Button
+										onClickEvent={() => {
+											updateModals({ signUpActive: true });
+											document.body.classList.add("locked");
+										}}
+										className="header__registration"
+										size="small"
+									>
 										Регистрация
 									</Button>
 									<Button
-										onClickEvent={() => updateModals({ signInActive: true })}
+										onClickEvent={() => {
+											updateModals({ signInActive: true });
+											document.body.classList.add("locked");
+										}}
 										className="header__login"
 										size="small"
 										color="blue"
@@ -88,82 +104,88 @@ const Header = () => {
 						<div onClick={openBurgerMenu} className="header-burger-menu">
 							<span></span>
 						</div>
-						<div
-							onClick={(event) => {
-								if (!event.target.closest(".header-burger-content__container")) {
-									closeBurgerMenu();
-								}
-							}}
-							className={`header-burger-content${isBurgerMenuActive ? " header-burger-content_active" : ""}`}
-						>
-							<div className="header-burger-content__body">
-								<div className="header-burger-content__container">
-									<div onClick={closeBurgerMenu} className="header-burger-content__close"></div>
-									<div className="header-burger-content__inner">
-										{!isLoggedIn ? (
-											<>
-												<Navbar
-													vertical
-													list={[
-														...getRoutes(),
-														{
-															type: "button",
-															text: "Регистрация",
-															onClickEvent: () => updateModals({ signUpActive: true }),
-														},
-													]}
-												/>
-												<Button
-													onClickEvent={() => updateModals({ signInActive: true })}
-													className="header__login"
-													size="medium"
-													color="blue"
-													arrow
-													arrowType="left"
-												>
-													Войти
-												</Button>
-											</>
-										) : (
-											<>
-												<Navbar
-													vertical
-													list={[
-														...getRoutes(),
-														{
-															text: "Профиль",
-															path: "/profile",
-														},
-													]}
-												/>
-												<Button
-													onClickEvent={() => {
-														localStorage.removeItem("loggedIn");
-														closeBurgerMenu();
-														dispatch({ type: "LOGGED_OUT" });
-														dispatch({ type: "CLOSE_ALL_MODALS" });
-														dispatch({ type: "UPDATE_ALERT_VISIBILITY", payload: true });
-														dispatch({ type: "CHANGE_ALERT_TEXT", payload: "Вы успешно вышли из аккаунта!" });
-														dispatch({ type: "CHANGE_ALERT_TYPE", payload: "success" });
-														setTimeout(() => dispatch({ type: "UPDATE_ALERT_VISIBILITY", payload: false }), 3500);
-													}}
-													classname="header__logout"
-													size="medium"
-													color="orange"
-													arrow
-													arrowType="left"
-												>
-													Выход
-												</Button>
-											</>
-										)}
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</header>
+			<div
+				onClick={(event) => {
+					if (!event.target.closest(".header-burger-content__container")) {
+						closeBurgerMenu();
+					}
+				}}
+				className={`header-burger-content${isBurgerMenuActive ? " header-burger-content_active" : ""}`}
+			>
+				<div className="header-burger-content__body">
+					<div className="header-burger-content__container">
+						<div onClick={closeBurgerMenu} className="header-burger-content__close"></div>
+						<div className="header-burger-content__inner">
+							{!isLoggedIn ? (
+								<>
+									<Navbar
+										vertical
+										list={[
+											...getRoutes(),
+											{
+												type: "button",
+												text: "Регистрация",
+												onClickEvent: () => {
+													updateModals({ signUpActive: true });
+													document.body.classList.add("locked");
+												},
+											},
+										]}
+									/>
+									<Button
+										onClickEvent={() => {
+											updateModals({ signInActive: true });
+											document.body.classList.add("locked");
+										}}
+										className="header__login"
+										size="medium"
+										color="blue"
+										arrow
+										arrowType="left"
+									>
+										Войти
+									</Button>
+								</>
+							) : (
+								<>
+									<Navbar
+										vertical
+										list={[
+											...getRoutes(),
+											{
+												text: "Профиль",
+												path: "/profile",
+											},
+										]}
+									/>
+									<Button
+										onClickEvent={() => {
+											localStorage.removeItem("loggedIn");
+											closeBurgerMenu();
+											dispatch({ type: "LOGGED_OUT" });
+											dispatch({ type: "CLOSE_ALL_MODALS" });
+											dispatch({ type: "UPDATE_ALERT_VISIBILITY", payload: true });
+											dispatch({ type: "CHANGE_ALERT_TEXT", payload: "Вы успешно вышли из аккаунта!" });
+											dispatch({ type: "CHANGE_ALERT_TYPE", payload: "success" });
+											setTimeout(() => dispatch({ type: "UPDATE_ALERT_VISIBILITY", payload: false }), 3500);
+										}}
+										classname="header__logout"
+										size="medium"
+										color="orange"
+										arrow
+										arrowType="left"
+									>
+										Выход
+									</Button>
+								</>
+							)}
+						</div>
+					</div>
+				</div>
+			</div>
 			<Transition in={isSignInModalActive} timeout={500} mountOnEnter unmountOnExit>
 				{(state) => <SignInModal transitionClassName={state} />}
 			</Transition>

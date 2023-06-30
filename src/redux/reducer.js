@@ -8,6 +8,7 @@ const loggedState = {
 const modalsState = {
 	signInActive: false,
 	signUpActive: false,
+	quizActive: false,
 };
 const formsState = {
 	signIn: {
@@ -40,7 +41,52 @@ const alertState = {
 	alertType: "success",
 	alertText: "",
 };
+const quizState = {
+	result: undefined,
+	lastPage: undefined,
+	answers: {
+		user: {
+			question1: undefined,
+			question2: undefined,
+			question3: undefined,
+			question4: undefined,
+		},
+		right: {
+			question1: 1,
+			question2: 1,
+			question3: 2,
+			question4: 3,
+		},
+	},
+};
 /* reducers */
+export const quizReducer = (state = quizState, action) => {
+	switch (action.type) {
+		case "SET_RESULT":
+			return {
+				...state,
+				result: action.payload,
+			};
+		case "CHANGE_LAST_PAGE":
+			return {
+				...state,
+				lastPage: action.payload,
+			};
+		case "CHANGE_ANSWER":
+			return {
+				...state,
+				answers: {
+					...state.answers,
+					user: {
+						...state.answers.user,
+						...action.payload,
+					},
+				},
+			};
+		default:
+			return state;
+	}
+};
 export const alertReducer = (state = alertState, action) => {
 	switch (action.type) {
 		case "CHANGE_ALERT_TYPE":

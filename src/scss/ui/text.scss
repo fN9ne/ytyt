@@ -1,17 +1,22 @@
+@import '../mixins';
+
 .text {
 	color: #22253B;
-	font-size: 16px;
+	// font-size: 16px;
+	@include rv('font-size', 16, 12, 320);
 
 	&_small {
 		font-size: 13px;
 	}
 
 	&_medium {
-		font-size: 20px;
+		// font-size: 20px;
+		@include rv('font-size', 20, 16, 320);
 	}
 
 	&_semi {
-		font-size: 24px;
+		// font-size: 24px;
+		@include rv('font-size', 24, 16, 320);
 	}
 
 	&_big {
@@ -19,6 +24,7 @@
 	}
 
 	&_biggest {
-		font-size: 46px;
+		// font-size: 46px;
+		@include rv('font-size', 46, 24, 320);
 	}
 }

@@ -1,6 +1,6 @@
 /* imports */
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { burgerReducer, loggedReducer, modalsReducer, formsReducer, alertReducer } from "./reducer";
+import { quizReducer, burgerReducer, loggedReducer, modalsReducer, formsReducer, alertReducer } from "./reducer";
 /* store */
 const store = configureStore({
 	reducer: combineReducers({
@@ -9,6 +9,7 @@ const store = configureStore({
 		modals: modalsReducer,
 		forms: formsReducer,
 		alert: alertReducer,
+		quiz: quizReducer,
 	}),
 });
 /* export */

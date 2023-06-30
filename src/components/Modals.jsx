@@ -9,7 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "./Loader";
 import FormItem from "../ui/FormItem";
 import Button from "../ui/Button";
+import Quiz from "./Quiz";
 /* modals */
+export const QuizModal = ({ transitionClassName }) => {
+	return (
+		<ModalBase size="big" className={transitionClassName}>
+			<Quiz />
+		</ModalBase>
+	);
+};
 export const SignInModal = ({ transitionClassName }) => {
 	const dispatch = useDispatch();
 
@@ -49,6 +57,8 @@ export const SignInModal = ({ transitionClassName }) => {
 						dispatch({ type: "UPDATE_ALERT_VISIBILITY", payload: true });
 						dispatch({ type: "CHANGE_ALERT_TEXT", payload: "Вы успешно авторизовались!" });
 						dispatch({ type: "CHANGE_ALERT_TYPE", payload: "success" });
+						dispatch({ type: "UPDATE_SIGNIN_VALUE", payload: { login: "", password: "" } });
+						dispatch({ type: "UPDATE_SIGNIN_VALID", payload: { login: false, password: false } });
 
 						setTimeout(() => dispatch({ type: "UPDATE_ALERT_VISIBILITY", payload: false }), 3500);
 					}
@@ -160,6 +170,11 @@ export const SignUpModal = ({ transitionClassName }) => {
 								dispatch({ type: "UPDATE_ALERT_VISIBILITY", payload: true });
 								dispatch({ type: "CHANGE_ALERT_TEXT", payload: "Вы успешно зарегестрировались!" });
 								dispatch({ type: "CHANGE_ALERT_TYPE", payload: "success" });
+								dispatch({ type: "UPDATE_SIGNUP_VALUE", payload: { login: "", email: "", password: "", passwordConfirm: "" } });
+								dispatch({
+									type: "UPDATE_SIGNUP_VALID",
+									payload: { login: false, email: false, password: false, passwordConfirm: false },
+								});
 
 								setTimeout(() => dispatch({ type: "UPDATE_ALERT_VISIBILITY", payload: false }), 3500);
 							})
@@ -264,18 +279,31 @@ const Form = ({ children, onSubmit }) => {
 	);
 };
 /* modal base */
-const ModalBase = ({ className, title, children }) => {
+const ModalBase = ({ className, title, children, size = "small" }) => {
 	const dispatch = useDispatch();
 
 	return (
-		<div className={`modal${className ? " " + className : ""}`}>
+		<div
+			onClick={(event) => {
+				if (!event.target.closest(".modal__content")) {
+					dispatch({ type: "CLOSE_ALL_MODALS" });
+					document.body.classList.remove("locked");
+				}
+			}}
+			className={`modal${className ? " " + className : ""}`}
+		>
 			<div className="modal__body">
-				<div className="modal__area" onClick={(event) => dispatch({ type: "CLOSE_ALL_MODALS" })} />
-				<div className="modal__content">
-					<div onClick={() => dispatch({ type: "CLOSE_ALL_MODALS" })} className="modal__close">
+				<div className={`modal__content${size === "big" ? " modal__content_big" : ""}`}>
+					<div
+						onClick={() => {
+							dispatch({ type: "CLOSE_ALL_MODALS" });
+							document.body.classList.remove("locked");
+						}}
+						className="modal__close"
+					>
 						<i></i>
 					</div>
-					<h2 className="modal__title text text_semi">{title}</h2>
+					{title && <h2 className="modal__title text text_semi">{title}</h2>}
 					<div className="modal__inner">{children}</div>
 				</div>
 			</div>

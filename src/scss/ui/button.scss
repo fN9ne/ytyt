@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../mixins';
 
 .button {
 	display: flex;
@@ -61,21 +62,25 @@
 	}
 
 	&_big {
-		height: 72px;
+		// height: 72px;
+		@include rv('height', 72, 52, 320);
 
-		padding: 0 44px;
+		// padding: 0 44px;
+		@include rv('padding', 44, 28, 320);
 
 		span {
-			font-size: 20px;
+			// font-size: 20px;
+			@include rv('font-size', 20, 16, 320);
 		}
 
 		svg {
-			width: 16px;
+			// width: 16px;
+			@include rv('width', 16, 12, 320);
 		}
 	}
 
 	&_arrow {
-		border-radius: 35px;
+		border-radius: 105px;
 
 		span {
 			color: #fff;

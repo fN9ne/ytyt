@@ -1,0 +1,294 @@
+@import '../mixins';
+@import '../variables';
+
+.quiz {
+	&__label {
+		height: 40px;
+
+		padding: 0 24px;
+
+		background-color: #EAEAEA;
+		border-radius: 20px;
+
+		font-size: 14px;
+		line-height: 40px;
+		color: #22253B;
+
+		@media (max-width: 768px) {
+			font-weight: 600;
+		}
+	}
+
+	&__quest,
+	&__answer-result {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		// margin: -16px 0 0 0;
+		@include rv('margin-top', -16, -8, 320);
+
+		@media (max-width: 768px) {
+			align-items: center;
+		}
+	}
+
+	&__screen {
+		transition: opacity 350ms 150ms, visibility 350ms 150ms, transform 350ms;
+
+		&.exiting,
+		&.exited {
+			opacity: 0;
+			visibility: hidden;
+
+			transform: scale(0.8);
+		}
+
+		&.entering,
+		&.entered {
+			opacity: 1;
+			visibility: visible;
+
+			transform: scale(1);
+		}
+	}
+
+	&__welcome {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__title {
+		line-height: calc(26/24);
+		font-weight: 400;
+
+		// margin: 32px 0 0 0;
+		@include rv('margin-top', 32, 16, 320);
+
+		&:first-child {
+			margin: 0;
+		}
+
+		&_center {
+			text-align: center;
+		}
+
+		@media (max-width: 768px) {
+			font-weight: 600;
+			text-align: center;
+
+			p {
+				display: inline;
+			}
+		}
+	}
+
+	&__text,
+	&__subtext {
+		max-width: calc(632/676 * 100%);
+
+		// margin: 24px 0 0 0;
+		@include rv('margin-top', 24, 12, 320);
+
+		line-height: calc(20/16);
+
+		@media (max-width: 768px) {
+			text-align: center;
+
+			p {
+				display: inline;
+			}
+		}
+	}
+
+	&__subtext {
+		font-weight: 500;
+	}
+
+	&__text {
+		&_center {
+			text-align: center;
+		}
+	}
+
+	&__button {
+		margin: 24px 0 0 0;
+
+		&_right {
+			align-self: flex-end;
+
+			@media (max-width: 768px) {
+				align-self: center;
+			}
+		}
+	}
+
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		align-self: stretch;
+
+		// margin: 44px 0 0 0;
+		@include rv('margin-top', 44, 32, 320);
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
+	}
+
+	&__result {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__result-text {
+		max-width: 80%;
+
+		font-weight: 500;
+		text-align: center;
+		line-height: calc(22/18);
+
+		margin: 16px 0 0 0;
+
+		@media (max-width: 768px) {
+			max-width: 95%;
+
+			font-weight: 400;
+		}
+	}
+
+	&__result-button {
+		&>span {
+			span {
+				&:nth-child(1) {
+					display: inline;
+
+					@media (max-width: 375px) {
+						display: none;
+					}
+				}
+
+				&:nth-child(2) {
+					display: none;
+
+					@media (max-width: 375px) {
+						display: inline;
+					}
+				}
+			}
+		}
+	}
+
+	&__estimation {
+		height: 80px;
+
+		background-color: #eaeaea;
+		border-radius: 40px;
+
+		padding: 0 32px;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 4px;
+
+		span {
+			font-size: 14px;
+		}
+
+		&_bad {
+			svg {
+				transform: scale(1, -1);
+			}
+		}
+
+		@media (max-width: 768px) {
+			font-weight: 600;
+		}
+	}
+
+	/* quiz answer */
+
+	&__answers {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+
+		@media (max-width: 768px) {
+			width: 100%;
+		}
+	}
+
+	&-answer {
+		display: flex;
+		gap: 16px;
+
+		cursor: pointer;
+
+		input {
+			display: none;
+		}
+
+		@media (max-width: 768px) {
+			align-items: center;
+		}
+
+		&__label {
+			width: 22px;
+			flex: 0 0 22px;
+			height: 22px;
+
+			background-color: #eaeaea;
+			border-radius: 4px;
+
+			position: relative;
+
+			&::before {
+				content: '';
+
+				width: 14px;
+				height: 14px;
+
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%) scale(0.5);
+
+				background-color: #f15525;
+				border-radius: 4px;
+
+				opacity: 0;
+				visibility: hidden;
+
+				transition: 350ms;
+			}
+		}
+
+		input:checked+.quiz-answer__label {
+			&::before {
+				transform: translate(-50%, -50%) scale(1);
+
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+		&__text {
+			// font-size: 15px;
+			@include rv('font-size', 15, 12, 320);
+			font-weight: 500;
+			line-height: 22px;
+
+			@media (max-width: 768px) {
+				line-height: 1;
+			}
+		}
+	}
+
+}

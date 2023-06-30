@@ -5,6 +5,11 @@ body {
 	background-color: #F9F8FD;
 }
 
+html,
+body {
+	height: 100%;
+}
+
 .container {
 	width: 100%;
 	max-width: 1160px;
@@ -47,32 +52,47 @@ body {
 	}
 }
 
+body.locked {
+	overflow: hidden;
+}
+
 .alert {
-	max-width: 300px;
-
-	background-color: #fff;
-	box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-
-	padding: 16px;
-	border-radius: 4px;
-
 	position: fixed;
 	left: 50%;
 	transform: translate(-50%, 0);
-	z-index: 2;
+	z-index: 4;
+
+	display: flex;
+	justify-content: center;
 
 	transition: 250ms;
 
-	cursor: pointer;
+	&__content {
+		max-width: 320px;
 
-	display: flex;
-	align-items: flex-start;
-	gap: 8px;
+		background-color: #fff;
+		border-radius: 4px;
+
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
+
+		padding: 16px;
+
+		transition: 250ms;
+
+		cursor: pointer;
+
+		svg {
+			width: 16px;
+			flex: 0 0 16px;
+			aspect-ratio: 1 / 1;
+		}
+	}
 
 	@media (max-width: 768px) {
 		max-width: 280px;
 		width: 100%;
-		justify-content: center;
 
 		span {
 			font-size: 12px;
@@ -106,8 +126,13 @@ body {
 	&_success {
 		$color: #2DA640;
 
-		border: 1px solid $color;
-		background-color: #ecfff1;
+		.alert {
+			&__content {
+				border: 1px solid $color;
+				background-color: #ecfff1;
+				box-shadow: 0 0 25px rgba(78, 151, 60, 0.05);
+			}
+		}
 
 		span {
 			color: $color;

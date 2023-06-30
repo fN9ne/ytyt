@@ -14,8 +14,10 @@ const Alert = ({ state, text, type }) => {
 					className={`alert${type ? " alert_" + type : ""} ${state}`}
 					onClick={() => dispatch({ type: "UPDATE_ALERT_VISIBILITY", payload: false })}
 				>
-					{type === "success" && <Checkmark />}
-					<span>{text}</span>
+					<div className="alert__content">
+						{type === "success" && <Checkmark />}
+						<span>{text}</span>
+					</div>
 				</div>
 			)}
 		</Transition>

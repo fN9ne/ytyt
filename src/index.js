@@ -17,6 +17,8 @@ import "./scss/components/header.scss";
 import "./scss/components/navbar.scss";
 import "./scss/components/loader.scss";
 import "./scss/components/modals.scss";
+import "./scss/components/quiz.scss";
+import "./scss/pages/homepage.scss";
 /* render root */
 ReactDOM.createRoot(document.querySelector(".wrapper")).render(
 	<Provider store={store}>
