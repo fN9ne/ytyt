@@ -6,7 +6,8 @@
 	@include rv('font-size', 16, 12, 320);
 
 	&_small {
-		font-size: 13px;
+		// font-size: 13px;
+		@include rv('font-size', 13, 11, 320);
 	}
 
 	&_medium {

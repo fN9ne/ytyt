@@ -12,7 +12,7 @@ body {
 
 .container {
 	width: 100%;
-	max-width: 1160px;
+	max-width: 1200px;
 
 	margin: 0 auto;
 	padding: 0 20px;
@@ -27,6 +27,18 @@ body {
 
 .page {
 	flex: 1 1 auto;
+}
+
+h3 {
+	font-weight: 600;
+}
+
+.title {
+	padding: 52px 0 0 0;
+
+	&_center {
+		text-align: center;
+	}
 }
 
 .error-message {
